@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "JSON Schema for save",
+  "type": "object",
+  "properties": {
+    "billing_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payment_method_id": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "billing_id",
+    "payment_method_id"
+  ],
+  "additionalProperties": false
+}

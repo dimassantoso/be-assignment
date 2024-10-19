@@ -1,0 +1,43 @@
+{
+     "GoVersion": "1.21",
+     "Version": "v1.17.16",
+     "ServiceName": "billing-engine",
+     "PackagePrefix": "billing-engine",
+     "ProtoSource": "billing-engine/api/proto",
+     "Owner": "dimassantoso",
+     "License": "Private License",
+     "Year": 2024,
+     "IsMonorepo": false,
+     "RestHandler": true,
+     "GRPCHandler": false,
+     "GraphQLHandler": false,
+     "FiberRestHandler": false,
+     "KafkaHandler": false,
+     "SchedulerHandler": false,
+     "RedisSubsHandler": false,
+     "TaskQueueHandler": false,
+     "PostgresListenerHandler": false,
+     "RabbitMQHandler": false,
+     "IsWorkerActive": false,
+     "RedisDeps": true,
+     "SQLDeps": true,
+     "MongoDeps": false,
+     "SQLUseGORM": true,
+     "ArangoDeps": false,
+     "SQLDriver": "postgres",
+     "WorkerPlugins": null,
+     "Modules": [
+          {
+               "ModuleName": "auth"
+          },
+          {
+               "ModuleName": "billing"
+          },
+          {
+               "ModuleName": "borrower"
+          },
+          {
+               "ModuleName": "loan"
+          }
+     ]
+}

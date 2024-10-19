@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "JSON Schema for save",
+  "type": "object",
+  "properties": {
+    "borrower_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "principle_amount": {
+      "type": "number",
+      "minimum": 1
+    },
+    "duration_id": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "borrower_id",
+    "principle_amount",
+    "duration_id"
+  ],
+  "additionalProperties": false
+}

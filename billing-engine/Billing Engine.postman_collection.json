@@ -1,0 +1,1265 @@
+{
+	"info": {
+		"_postman_id": "184424a8-7f99-42c6-bb36-2493645b9b22",
+		"name": "Billing Engine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4495018"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{BASIC_AUTH}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"P@SSword1234\",\n    \"keep_sign_in\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/auth/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{BASIC_AUTH}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"P@SSword1234\",\n    \"keep_sign_in\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/auth/login",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Www-Authenticate",
+									"value": "Basic realm=\"\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:05:08 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "259"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 201,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"email\": \"admin@example.com\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk4NzU5MDgsInN1YiI6IjAiLCJyb2xlIjoiIiwiYWRkaXRpb25hbCI6bnVsbH0.TEXGEK1TlZnDNrcwRsODJAh49rYAfzhWP0GcoL3aQqk\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"cs@example.com\",\n    \"password\": \"P@SSword1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/auth",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"auth"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"cs@example.com\",\n    \"password\": \"P@SSword1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/auth",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"auth"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:05:24 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 201,\n    \"message\": \"Success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Borrower",
+			"item": [
+				{
+					"name": "Get All Borrower",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/v1/borrower?page=1&limit=10&order_by=id&sort=asc",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"borrower"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "cust",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "order_by",
+									"value": "id"
+								},
+								{
+									"key": "sort",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Borrower",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/v1/borrower?page=1&limit=10&order_by=id&sort=asc",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"borrower"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "adm",
+											"disabled": true
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "order_by",
+											"value": "id"
+										},
+										{
+											"key": "sort",
+											"value": "asc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:05:42 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "280"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Success\",\n    \"meta\": {\n        \"page\": 1,\n        \"limit\": 10,\n        \"total_records\": 1,\n        \"total_pages\": 1\n    },\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"John Doe\",\n            \"email\": \"john.doe@gmail.com\",\n            \"created_at\": \"2024-10-19T00:05:33+07:00\",\n            \"updated_at\": \"2024-10-19T00:05:33+07:00\",\n            \"is_delinquent\": false\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Borrower By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/v1/borrower/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"borrower",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Borrower By ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/v1/borrower/:id",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"borrower",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:54:56 GMT"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"John Doe\",\n        \"email\": \"john.doe@gmail.com\",\n        \"created_at\": \"2024-10-19T00:05:33+07:00\",\n        \"updated_at\": \"2024-10-19T00:06:07+07:00\",\n        \"is_delinquent\": false,\n        \"active_loan\": {\n            \"id\": 1,\n            \"borrower_id\": 1,\n            \"principal_amount\": 100000000,\n            \"interest_rate\": 10,\n            \"interest_amount\": 10000000,\n            \"total_amount\": 110000000,\n            \"duration\": 50,\n            \"last_payment_date\": \"2024-10-19T00:06:51+07:00\",\n            \"outstanding\": 107800000,\n            \"created_at\": \"2024-10-19T00:06:34+07:00\",\n            \"updated_at\": \"2024-10-19T00:06:51+07:00\",\n            \"billing_plan\": [\n                {\n                    \"id\": 1,\n                    \"week\": 1,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-10-26T00:00:00Z\",\n                    \"payment_date\": \"2024-10-19T00:06:51+07:00\",\n                    \"payment_method_id\": 1,\n                    \"payment_method_name\": \"Cash\",\n                    \"status\": \"PAID\"\n                },\n                {\n                    \"id\": 2,\n                    \"week\": 2,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-11-02T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 3,\n                    \"week\": 3,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-11-09T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 4,\n                    \"week\": 4,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-11-16T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 5,\n                    \"week\": 5,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-11-23T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 6,\n                    \"week\": 6,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-11-30T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 7,\n                    \"week\": 7,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-12-07T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 8,\n                    \"week\": 8,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-12-14T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 9,\n                    \"week\": 9,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-12-21T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 10,\n                    \"week\": 10,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2024-12-28T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 11,\n                    \"week\": 11,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-01-04T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 12,\n                    \"week\": 12,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-01-11T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 13,\n                    \"week\": 13,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-01-18T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 14,\n                    \"week\": 14,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-01-25T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 15,\n                    \"week\": 15,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-02-01T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 16,\n                    \"week\": 16,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-02-08T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 17,\n                    \"week\": 17,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-02-15T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 18,\n                    \"week\": 18,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-02-22T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 19,\n                    \"week\": 19,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-03-01T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 20,\n                    \"week\": 20,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-03-08T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 21,\n                    \"week\": 21,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-03-15T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 22,\n                    \"week\": 22,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-03-22T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 23,\n                    \"week\": 23,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-03-29T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 24,\n                    \"week\": 24,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-04-05T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 25,\n                    \"week\": 25,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-04-12T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 26,\n                    \"week\": 26,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-04-19T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 27,\n                    \"week\": 27,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-04-26T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 28,\n                    \"week\": 28,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-05-03T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 29,\n                    \"week\": 29,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-05-10T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 30,\n                    \"week\": 30,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-05-17T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 31,\n                    \"week\": 31,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-05-24T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 32,\n                    \"week\": 32,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-05-31T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 33,\n                    \"week\": 33,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-06-07T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 34,\n                    \"week\": 34,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-06-14T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 35,\n                    \"week\": 35,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-06-21T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 36,\n                    \"week\": 36,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-06-28T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 37,\n                    \"week\": 37,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-07-05T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 38,\n                    \"week\": 38,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-07-12T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 39,\n                    \"week\": 39,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-07-19T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 40,\n                    \"week\": 40,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-07-26T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 41,\n                    \"week\": 41,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-08-02T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 42,\n                    \"week\": 42,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-08-09T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 43,\n                    \"week\": 43,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-08-16T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 44,\n                    \"week\": 44,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-08-23T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 45,\n                    \"week\": 45,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-08-30T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 46,\n                    \"week\": 46,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-09-06T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 47,\n                    \"week\": 47,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-09-13T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 48,\n                    \"week\": 48,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-09-20T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 49,\n                    \"week\": 49,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-09-27T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                },\n                {\n                    \"id\": 50,\n                    \"week\": 50,\n                    \"amount_due\": 2200000,\n                    \"due_date\": \"2025-10-04T00:00:00Z\",\n                    \"payment_date\": null,\n                    \"payment_method_id\": null,\n                    \"payment_method_name\": null,\n                    \"status\": \"UNPAID\"\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Borrower",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Michael Doe\",\n    \"email\": \"michael.doe@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/borrower",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"borrower"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Borrower",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/borrower",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"borrower"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:05:33 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "215"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 201,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"John Doe\",\n        \"email\": \"john.doe@gmail.com\",\n        \"created_at\": \"2024-10-19T00:05:33+07:00\",\n        \"updated_at\": \"2024-10-19T00:05:33+07:00\",\n        \"is_delinquent\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Borrower",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/borrower/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"borrower",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Borrower",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/borrower/:id",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"borrower",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:06:07 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Check Delinquent",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/v1/borrower/:id/delinquent-check",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"borrower",
+								":id",
+								"delinquent-check"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Check Delinquent",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/v1/borrower/:id/delinquent-check",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"borrower",
+										":id",
+										"delinquent-check"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 18:43:26 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"John Doe\",\n        \"is_delinquent\": true\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Borrower",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/v1/borrower/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"borrower",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Borrower",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/v1/borrower/:id",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"borrower",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 18:43:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Loan",
+			"item": [
+				{
+					"name": "Get All Loan",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/v1/loan",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"loan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Loan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"borrower_id\": 1,\n    \"principle_amount\": 5000000,\n    \"duration_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/loan",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"loan"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Loan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"borrower_id\": 1,\n    \"principle_amount\": 100000000,\n    \"duration_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/loan",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"loan"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:06:34 GMT"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 201,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"borrower_id\": 1,\n        \"borrower_name\": \"John Doe\",\n        \"principal_amount\": 100000000,\n        \"interest_rate\": 10,\n        \"interest_amount\": 10000000,\n        \"total_amount\": 110000000,\n        \"duration\": 50,\n        \"createdAt\": \"2024-10-19T00:06:34+07:00\",\n        \"updatedAt\": \"2024-10-19T00:06:34+07:00\",\n        \"billing_schedule\": [\n            {\n                \"week\": 1,\n                \"due_date\": \"2024-10-26\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 2,\n                \"due_date\": \"2024-11-02\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 3,\n                \"due_date\": \"2024-11-09\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 4,\n                \"due_date\": \"2024-11-16\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 5,\n                \"due_date\": \"2024-11-23\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 6,\n                \"due_date\": \"2024-11-30\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 7,\n                \"due_date\": \"2024-12-07\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 8,\n                \"due_date\": \"2024-12-14\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 9,\n                \"due_date\": \"2024-12-21\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 10,\n                \"due_date\": \"2024-12-28\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 11,\n                \"due_date\": \"2025-01-04\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 12,\n                \"due_date\": \"2025-01-11\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 13,\n                \"due_date\": \"2025-01-18\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 14,\n                \"due_date\": \"2025-01-25\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 15,\n                \"due_date\": \"2025-02-01\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 16,\n                \"due_date\": \"2025-02-08\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 17,\n                \"due_date\": \"2025-02-15\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 18,\n                \"due_date\": \"2025-02-22\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 19,\n                \"due_date\": \"2025-03-01\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 20,\n                \"due_date\": \"2025-03-08\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 21,\n                \"due_date\": \"2025-03-15\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 22,\n                \"due_date\": \"2025-03-22\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 23,\n                \"due_date\": \"2025-03-29\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 24,\n                \"due_date\": \"2025-04-05\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 25,\n                \"due_date\": \"2025-04-12\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 26,\n                \"due_date\": \"2025-04-19\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 27,\n                \"due_date\": \"2025-04-26\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 28,\n                \"due_date\": \"2025-05-03\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 29,\n                \"due_date\": \"2025-05-10\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 30,\n                \"due_date\": \"2025-05-17\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 31,\n                \"due_date\": \"2025-05-24\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 32,\n                \"due_date\": \"2025-05-31\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 33,\n                \"due_date\": \"2025-06-07\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 34,\n                \"due_date\": \"2025-06-14\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 35,\n                \"due_date\": \"2025-06-21\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 36,\n                \"due_date\": \"2025-06-28\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 37,\n                \"due_date\": \"2025-07-05\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 38,\n                \"due_date\": \"2025-07-12\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 39,\n                \"due_date\": \"2025-07-19\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 40,\n                \"due_date\": \"2025-07-26\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 41,\n                \"due_date\": \"2025-08-02\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 42,\n                \"due_date\": \"2025-08-09\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 43,\n                \"due_date\": \"2025-08-16\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 44,\n                \"due_date\": \"2025-08-23\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 45,\n                \"due_date\": \"2025-08-30\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 46,\n                \"due_date\": \"2025-09-06\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 47,\n                \"due_date\": \"2025-09-13\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 48,\n                \"due_date\": \"2025-09-20\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 49,\n                \"due_date\": \"2025-09-27\",\n                \"amount_due\": 2200000\n            },\n            {\n                \"week\": 50,\n                \"due_date\": \"2025-10-04\",\n                \"amount_due\": 2200000\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "Create Loan",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"borrower_id\": 1,\n    \"principle_amount\": 5000000,\n    \"duration_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/loan",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"loan"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 18:53:26 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"code\": 400,\n    \"message\": \"borrower 1 have active loan\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Loan Simulation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"principle_amount\": 10000000,\n    \"duration_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/loan/simulation",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"loan",
+								"simulation"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Loan Simulation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"principle_amount\": 10000000,\n    \"duration_id\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/loan/simulation",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"loan",
+										"simulation"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:06:24 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1200"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"week\": 1,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 2,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 3,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 4,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 5,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 6,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 7,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 8,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 9,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 10,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 11,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 12,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 13,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 14,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 15,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 16,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 17,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 18,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 19,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 20,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 21,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 22,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 23,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 24,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 25,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 26,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 27,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 28,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 29,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 30,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 31,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 32,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 33,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 34,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 35,\n            \"amount_due\": 319445\n        },\n        {\n            \"week\": 36,\n            \"amount_due\": 319445\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Loan Outstanding",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/v1/loan/outstanding/borrower/:borrower_id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"loan",
+								"outstanding",
+								"borrower",
+								":borrower_id"
+							],
+							"variable": [
+								{
+									"key": "borrower_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Loan Outstanding",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{HOST}}/v1/loan/outstanding/borrower/:borrower_id",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"loan",
+										"outstanding",
+										"borrower",
+										":borrower_id"
+									],
+									"variable": [
+										{
+											"key": "borrower_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 19:09:28 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"John Doe\",\n        \"outstanding\": 1650000\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Billing",
+			"item": [
+				{
+					"name": "Make Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"billing_id\": 1,\n    \"payment_method_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/v1/billing/repayment",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"billing",
+								"repayment"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Make Payment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"billing_id\": 1,\n    \"payment_method_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{HOST}}/v1/billing/repayment",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"v1",
+										"billing",
+										"repayment"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 18 Oct 2024 17:06:51 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"code\": 201,\n    \"message\": \"Success\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

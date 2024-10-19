@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "JSON Schema for login",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "minLength": 1,
+      "format": "email"
+    },
+    "password": {
+      "type": "string",
+      "minLength": 8
+    },
+    "keep_sign_in": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "email",
+    "password"
+  ]
+}
