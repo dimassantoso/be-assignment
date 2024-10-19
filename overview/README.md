@@ -80,7 +80,6 @@ $ make run
 #### Login
 We used Bearer token as security authentication for every main business and Basic auth for login
 ```
-Basic YmlsbGluZy1lbmdpbmU6YmlsbGluZy1lbmdpbmU=
 ```
 
 ```
