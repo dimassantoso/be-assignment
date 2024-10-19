@@ -3,3 +3,4 @@ vendor
 main_service.go
 billing-engine
 coverage.txt
+.idea
