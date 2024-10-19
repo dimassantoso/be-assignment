@@ -56,6 +56,25 @@ $ make migration
 ```
 $ make run
 ```
+### Feature
+- Borrower
+1. Create Borrower
+2. Update Borrower
+3. Get All Borrower
+4. Get Detail Borrower (contains active loan and delinquent status)
+5. Check Delinquent
+- Billing
+1. Make Payment
+- Loan
+1. Create Payment (include generate payment schedule)
+2. Installment Simulation
+3. Get Outstanding
+
+### Architecture
+1. Golang
+2. Clean Architecture
+3. Restful API
+4. Singleton Design Pattern
 
 ### Main Endpoint
 #### Login
