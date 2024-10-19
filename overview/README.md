@@ -28,3 +28,77 @@ We need to track the borrower if the borrower is Delinquent( any borrower that w
 
 ## Database Architecture
 ![alt text](https://github.com/dimassantoso/be-assignment/blob/main/overview/UMLDiagram.png?raw=true)
+
+## Run Biling Engine
+### Prepare dependencies (PostgreSQL, Redis and OpenTracing)
+```
+$ docker-compose up -d
+```
+
+### Create database at PostgreSQL
+```
+create database "billing-engine";
+```
+
+### Go to `billing-engine` directory
+```
+$ cd ..
+$ cd billing-engine
+```
+
+### Setup everything in `.env` file
+
+### Run migration and seeding data
+```
+$ make migration
+```
+### Build and run service
+```
+$ make run
+```
+
+### Main Endpoint
+#### Login
+We used Bearer token as security authentication for every main business and Basic auth for login
+```
+Basic YmlsbGluZy1lbmdpbmU6YmlsbGluZy1lbmdpbmU=
+```
+
+```
+curl --location 'localhost:8000/v1/auth/login' \
+--header 'Authorization: Basic YmlsbGluZy1lbmdpbmU6YmlsbGluZy1lbmdpbmU=' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "admin@example.com",
+    "password": "P@SSword1234",
+    "keep_sign_in": true
+}'
+```
+
+#### Get Outstanding
+```
+curl --location 'localhost:8000/v1/loan/outstanding/borrower/1' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3OTg3MzIsInN1YiI6IjAiLCJyb2xlIjoiIiwiYWRkaXRpb25hbCI6bnVsbH0.xfH2r5n-qWbeM7jGrOOIXzGWDkp_Px9f-mHvccYT5tU'
+```
+
+### Check IsDelinquent
+```
+curl --location 'localhost:8000/v1/borrower/1/delinquent-check' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3OTg3MzIsInN1YiI6IjAiLCJyb2xlIjoiIiwiYWRkaXRpb25hbCI6bnVsbH0.xfH2r5n-qWbeM7jGrOOIXzGWDkp_Px9f-mHvccYT5tU'
+```
+also could be check in borrower detail data
+```
+curl --location 'localhost:8000/v1/borrower/1' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3OTg3MzIsInN1YiI6IjAiLCJyb2xlIjoiIiwiYWRkaXRpb25hbCI6bnVsbH0.xfH2r5n-qWbeM7jGrOOIXzGWDkp_Px9f-mHvccYT5tU'
+```
+
+### Make Payment
+```
+curl --location 'localhost:8000/v1/billing/repayment' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mjk3OTg3MzIsInN1YiI6IjAiLCJyb2xlIjoiIiwiYWRkaXRpb25hbCI6bnVsbH0.xfH2r5n-qWbeM7jGrOOIXzGWDkp_Px9f-mHvccYT5tU' \
+--header 'Content-Type: application/json' \
+--data '{
+    "billing_id": 1,
+    "payment_method_id": 1
+}'
+```
