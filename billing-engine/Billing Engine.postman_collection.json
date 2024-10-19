@@ -417,6 +417,37 @@
 					]
 				},
 				{
+					"name": "Get Borrower By ID Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/v1/borrower/:id",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"v1",
+								"borrower",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Create Borrower",
 					"request": {
 						"method": "POST",
