@@ -27,4 +27,4 @@ To cover up for missed payments customers will need to make repayments for the r
 We need to track the borrower if the borrower is Delinquent( any borrower that who’s not paid for last 2 repayments)
 
 ## Database Architecture
-![alt text](https://github.com/dimassantoso/be-assignment/blob/main/image.jpg?raw=true)
+![alt text](https://github.com/dimassantoso/be-assignment/blob/main/UMLDiagram.png?raw=true)
